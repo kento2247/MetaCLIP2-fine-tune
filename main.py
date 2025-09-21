@@ -9,7 +9,6 @@ import argparse
 import os
 import json
 from tqdm import tqdm
-import numpy as np
 
 
 class ContrastiveLoss(nn.Module):
