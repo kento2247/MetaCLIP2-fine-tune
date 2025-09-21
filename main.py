@@ -189,8 +189,8 @@ class MetaCLIP2Trainer:
                 self.save_checkpoint('best_model.pt')
                 print(f'Best model saved with loss: {best_loss:.4f}')
 
-            if (epoch + 1) % self.args.save_epoch_interval == 1:
-                self.save_checkpoint(f'checkpoint_epoch{epoch+1}.pt')
+            # Save checkpoint after every epoch
+            self.save_checkpoint(f'checkpoint_epoch{epoch+1}.pt')
 
     def save_checkpoint(self, filename):
         save_path = os.path.join(self.args.output_dir, filename)
@@ -236,7 +236,7 @@ def parse_args():
                         help='Batch size for training')
     parser.add_argument('--epochs', type=int, default=10,
                         help='Number of training epochs')
-    parser.add_argument('--learning_rate', type=float, default=1e-4,
+    parser.add_argument('--learning_rate', type=float, default=1e-5,
                         help='Learning rate')
     parser.add_argument('--weight_decay', type=float, default=0.01,
                         help='Weight decay')
